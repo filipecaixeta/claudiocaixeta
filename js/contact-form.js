@@ -50,7 +50,7 @@ $(document).ready(function(){
             //     }
             // });
             email = "fiwlipewcaiwxeta@gmail.com";
-            $.post('https://formspree.io/'+.email.replace(/w/g,''), post_data, function(response){
+            $.post('https://formspree.io/'+email.replace(/w/g,''), post_data, function(response){
             
                 //load json data from server and output message     
                 if (response.type == 'error') {
