@@ -68,9 +68,9 @@
                         
                         <div class="col-md-8">
                             <a href="index.html#portfolio" style="text-decoration: none;"><h1 class="hs-line-11 font-alt mb-20 mb-xs-0">Acervo</h1></a>
-                            <!-- <div class="hs-line-4 font-alt black">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing
-                            </div> -->
+                            <div class="hs-line-4 font-alt black" id="acervoTitle">
+                                
+                            </div>
                         </div>
                         
                         <div class="col-md-4 mt-30">
@@ -86,7 +86,7 @@
             
             
             <!-- Section -->
-            <section class="page-section">
+            <section class="page-section" style="padding: 50px 0;">
                 <div class="container relative">
                     
                     <!-- Photo Grid -->
@@ -153,20 +153,32 @@
                         continue;
                     params[nv[0]] = nv[1] || true;
                 }
-                quadros = quadrosList[params['acervo']];
+                quadros = quadrosList[params['acervo']][1];
+
+                $("#acervoTitle").text(quadrosList[params['acervo']][0]);
+
                 width = $($("#photosDiv").children()['0']).width();
                 height = parseInt(418.0/650.0*width);
+                col = 4;
+                if (params['orientation']=="portrait")
+                {
+                    temp = width;
+                    width = height;
+                    height = temp;
+                    col = 3;
+                }
                 $("#photosDiv").html("");
                 html = "";
-                for (var i = 0; i < quadros.length; i+=2) 
+                
+                for (var i = 0; i < quadros.length; i+=3) 
                 {
-                    html = html + '<div class="col-md-4 col-lg-4 mb-md-10">\
+                    html = html + '<div class="col-md-'+col+' col-lg-'+col+' mb-md-10">\
                                         <div class="post-prev-img">\
-                                            <a href="images/acervo/'+params['acervo']+'/'+quadros[i]+'" class="lightbox-gallery-2 mfp-image">\
-                                                <div style="background-image: url(\'images/acervo/'+params['acervo']+'/'+quadros[i]+'\');background-position: center center;background-size: cover;height:'+height+'px;width: 100%;">\
+                                            <a href="'+quadros[i+1]+'" class="lightbox-gallery-2 mfp-image">\
+                                                <div style="background-image: url(\''+quadros[i]+'\');background-position: center center;background-size: cover;height:'+height+'px;width: '+width+'px;">\
                                                 </div>\
                                             </a>\
-                                            <div class="font-alt" style="text-align: center;">'+quadros[i+1]+'</div>\
+                                            <div class="font-alt" style="text-align: center;">'+quadros[i+2]+'</div>\
                                         </div>\
                                     </div>';
                     

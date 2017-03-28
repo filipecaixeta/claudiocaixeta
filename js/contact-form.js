@@ -53,7 +53,7 @@ $(document).ready(function(){
             //         alert('POST failed.');
             //     }
             // });
-            email = "fiwlipewcaiwxeta@gmail.com";
+            email = "cowntatwo@claudwiocawixweta.com.br";
             $.post('https://formspree.io/'+email.replace(/w/g,''), post_data, function(response){
             
                 //load json data from server and output message     
